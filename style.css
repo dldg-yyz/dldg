@@ -86,22 +86,39 @@ nav.top-nav a.logo {
   padding: 60px 40px;
 }
 
-/* 弹窗 */
+/* 弹窗背景 */
 .modal {
-  display: none;              /* 默认隐藏 */
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  z-index: 3000;
-
+  display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.3);
+  z-index: 3000;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
+/* 显示状态 */
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 弹窗图片 */
 .modal img {
-  max-width: 70vw;
-  max-height: 70vh;
+  max-width: 70vw;   /* 宽度不超过屏幕70% */
+  max-height: 70vh;  /* 高度不超过屏幕70% */
   object-fit: contain;
+  border-radius: 4px;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.modal.active img {
+  transform: scale(1);
 }
 
 /* 关闭按钮 */
@@ -114,3 +131,4 @@ nav.top-nav a.logo {
   cursor: pointer;
   user-select: none;
 }
+
