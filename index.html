@@ -29,55 +29,59 @@
   </div>
 
   <!-- JavaScript -->
-  <script>
-    const images = Array.from(document.querySelectorAll('.grid img'));
-    let currentIndex = 0;
+<script>
+  // 获取所有图片
+  const images = Array.from(document.querySelectorAll('.grid img'));
+  let currentIndex = 0;
 
-    function openModal(index) {
-      currentIndex = index;
-      const modal = document.getElementById('modal');
-      const modalImage = document.getElementById('modalImage');
+  const modal = document.getElementById('modal');
+  const modalImage = document.getElementById('modalImage');
 
-      modalImage.src = images[index].src;
-      modal.style.display = 'flex';
+  // 打开弹窗
+  function openModal(index) {
+    currentIndex = index;
+    modalImage.src = images[currentIndex].src;
+    modal.classList.add('active'); // CSS 控制显示和动画
+  }
+
+  // 关闭弹窗
+  function closeModal(e) {
+    if (e.target.id === 'modal' || e.target.classList.contains('close')) {
+      modal.classList.remove('active'); // 隐藏并淡出
     }
+  }
 
-    function closeModal(e) {
-      if (
-        e.target.id === 'modal' ||
-        e.target.classList.contains('close')
-      ) {
-        document.getElementById('modal').style.display = 'none';
-      }
-    }
+  // 左右切换
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    modalImage.src = images[currentIndex].src;
+  }
 
-    function showNext() {
-      currentIndex = (currentIndex + 1) % images.length;
-      document.getElementById('modalImage').src = images[currentIndex].src;
-    }
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    modalImage.src = images[currentIndex].src;
+  }
 
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      document.getElementById('modalImage').src = images[currentIndex].src;
-    }
+  // 键盘控制
+  document.addEventListener('keydown', function(e) {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeModal({target: modal});
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
 
-    document.addEventListener('keydown', function (e) {
-      const modal = document.getElementById('modal');
-      if (modal.style.display !== 'flex') return;
+  // 点击图片打开弹窗
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => openModal(index));
+  });
 
-      if (e.key === 'Escape') modal.style.display = 'none';
-      if (e.key === 'ArrowRight') showNext();
-      if (e.key === 'ArrowLeft') showPrev();
-    });
+  // 点击关闭按钮或背景
+  modal.addEventListener('click', closeModal);
 
-    images.forEach((img, index) => {
-      img.addEventListener('click', () => openModal(index));
-    });
+  // 禁止右键菜单
+  document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
 
-    document.addEventListener('contextmenu', function (e) {
-      e.preventDefault();
-    });
-  </script>
 
 </body>
 </html>
