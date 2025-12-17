@@ -57,8 +57,8 @@ nav.top-nav a {
 
 /* logo 可以单独调整 */
 nav.top-nav a.logo {
-  font-weight: 700;
-  font-size: 46px;
+  font-weight: 500;
+  font-size: 30px;
 }
 
 /* 图片网格 */
