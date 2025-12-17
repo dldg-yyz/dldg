@@ -8,12 +8,21 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-/* 禁止图片右键 */
-body img {
-  -webkit-user-drag: none;
+/* 禁止网页右键菜单 */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
-  pointer-events: none;
 }
+
+body, html {
+  -webkit-touch-callout: none; /* iOS Safari */
+}
+
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
 
 /* 引入 Mansalva 字体，只用于导航 */
 @font-face {
@@ -28,7 +37,15 @@ body img {
 nav.top-nav a {
   font-family: 'Mansalva', Helvetica, Arial, sans-serif;
   font-weight: normal;
-  font-size: 46px;   /* 可调整大小 */
+  font-size: 46px;   /* 顶部导航字号，可自行调整 */
+  text-decoration: none;
+  color: black;
+}
+
+/* 如果 logo 需要不同风格，可以单独设置 */
+nav.top-nav a.logo {
+  font-weight: 700;       
+  font-size: 46px;        
 }
 
 /* Navigation */
@@ -46,39 +63,27 @@ nav.top-nav {
   z-index: 1000;
 }
 
-nav.top-nav a {
-  text-decoration: none;
-  color: black;
-  font-weight: 600;
-  font-size: 18px;
-}
-
-nav.top-nav a.logo {
-  font-weight: 700;
-  font-size: 20px;
-}
-
 /* Grid */
 .grid {
-  max-width: 1200px;
-  margin: 100px auto 0;
+  max-width: 1200px;       /* 控制内容宽度 */
+  margin: 100px auto 0;    /* 顶部留出导航高度 */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  padding: 40px 20px;
+  padding: 40px 20px;      /* 内部留白 */
 }
 
 .grid img {
-  width: 100%;               /* 占满列宽 */
-  aspect-ratio: 2 / 3;       /* 保持竖向 2:3 比例 */
-  object-fit: cover;         /* 保持裁剪，防止拉伸 */
+  width: 100%;             /* 占满列宽 */
+  aspect-ratio: 2 / 3;     /* 固定竖向 2:3 */
+  object-fit: cover;       /* 保持裁剪 */
   display: block;
-  height: auto;              /* 高度由宽度和比例自动计算 */
+  height: auto;            /* 高度随宽度计算 */
 }
 
 /* Text Pages */
 .text-page {
   max-width: 700px;
-  margin: 100px auto 0;  /* 顶部留出导航高度 */
+  margin: 100px auto 0;    /* 顶部留出导航高度 */
   padding: 60px 40px;
 }
