@@ -15,6 +15,22 @@ body img {
   pointer-events: none;
 }
 
+/* 引入 Mansalva 字体，只用于导航 */
+@font-face {
+  font-family: 'Mansalva';
+  src: url('fonts/Mansalva-Regular.woff2') format('woff2'),
+       url('fonts/Mansalva-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 顶部导航使用 Mansalva 字体 */
+nav.top-nav a {
+  font-family: 'Mansalva', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 22px;   /* 可调整大小 */
+}
+
 /* Navigation */
 nav.top-nav {
   display: flex;
