@@ -5,15 +5,8 @@
   <title>Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
-  <script>
-  // 禁止整个网页右键菜单
-  document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-   });
- </script>
-
+ 
 <body>
-
   <!-- Top Navigation -->
   <nav>
     <a href="index.html" class="logo">Portfolio</a>
@@ -32,7 +25,15 @@
     <img src="images/work5.jpg" alt="Work 5">
     <img src="images/work6.jpg" alt="Work 6">
   </main>
-
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('img').forEach(function(img) {
+      img.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+    });
+  });
+</script>
 </body>
 </html>
 
