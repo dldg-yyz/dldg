@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+/* Grid */
+.grid {
+  max-width: 1200px;      /* 控制内容宽度 */
+  margin: 0 auto;         /* 左右自动留白并居中 */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;     /* 内部留一点呼吸感 */
+}
+
+.grid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;   /* 关键：统一尺寸 */
+  display: block;
+}
+
+/* Text Pages */
+.text-page {
+  max-width: 700px;
+  padding: 60px 40px;
+}
