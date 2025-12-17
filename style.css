@@ -9,41 +9,47 @@ body {
 }
 
 /* Navigation */
-nav {
+nav.top-nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
+  justify-content: center;  /* 水平居中所有导航项 */
+  align-items: center;      /* 垂直居中 */
+  gap: 40px;                /* 导航项间距 */
+  padding: 20px 0;          /* 顶部内边距 */
   border-bottom: 1px solid #ddd;
+  position: fixed;           /* 固定在顶部 */
+  width: 100%;
+  top: 0;
+  background-color: #fff;    /* 背景色 */
+  z-index: 1000;
 }
 
-.logo {
-  font-weight: bold;
+nav.top-nav a {
   text-decoration: none;
   color: black;
+  font-weight: 600;
+  font-size: 18px;
 }
 
-.nav-links a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: black;
+nav.top-nav a.logo {
+  font-weight: 700;
+  font-size: 20px;
 }
 
 /* Grid */
 .grid {
   max-width: 1200px;      /* 控制内容宽度 */
-  margin: 0 auto;         /* 左右自动留白并居中 */
+  margin: 100px auto 0;   /* 左右居中 + 顶部留出导航高度 */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  padding: 40px 20px;     /* 内部留一点呼吸感 */
+  padding: 40px 20px;     /* 内部留白 */
 }
 
 .grid img {
   width: 100%;               /* 占满容器宽度 */
-  height: 300px;             
-  aspect-ratio: 2 / 3;       /* 关键：固定 2:3 比例 */
-  object-fit: cover;         /* 保持裁剪效果，防止拉伸 */
+  height: 300px;             /* 固定高度 */
+  aspect-ratio: 2 / 3;       /* 固定 2:3 比例 */
+  object-fit: cover;         /* 裁剪防拉伸 */
   display: block;
 }
 
