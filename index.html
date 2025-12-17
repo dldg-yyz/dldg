@@ -28,3 +28,16 @@
 
 </body>
 </html>
+
+<script>
+  // 禁止整个网页右键菜单
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert("Right-click is disabled on this page.");
+  });
+</script>
+
+img {
+  -webkit-user-drag: none;   /* 禁止拖动图片 */
+  user-select: none;          /* 禁止选中图片 */
+}
