@@ -45,6 +45,33 @@ nav.top-nav {
   background-color: #fff;
   z-index: 1000;
 }
+.social-link {
+  position: absolute;
+  right: 40px;               /* 距离右边边缘 */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.social-link img {
+  width: 30px;               /* 图标大小 */
+  height: 30px;
+}
+
+/* 手机适配 */
+@media (max-width: 600px) {
+  .social-link {
+    right: 10px;
+  }
+  
+  .social-link img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  nav.top-nav {
+    gap: 20px;   /* 导航间距变小 */
+  }
+}
 
 /* 导航链接字体样式 */
 nav.top-nav a {
