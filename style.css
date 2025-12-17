@@ -44,8 +44,8 @@ nav.top-nav a.logo {
 
 /* Grid */
 .grid {
-  max-width: 1200px;      /* 内容宽度 */
-  margin: 100px auto 0;   /* 顶部留出导航高度 */
+  max-width: 1200px;
+  margin: 100px auto 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
@@ -54,8 +54,8 @@ nav.top-nav a.logo {
 
 .grid img {
   width: 100%;
-  height: 300px;
-  aspect-ratio: 2 / 3;  /* 竖向 3:2 */
+  height: 300px;       /* 固定高度 */
+  aspect-ratio: 2 / 3; /* 竖向 2:3 */
   object-fit: cover;
   display: block;
 }
