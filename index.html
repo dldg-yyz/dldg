@@ -53,26 +53,64 @@
   </div>
 
   <!-- JavaScript -->
-  <script>
-    function openModal(title, imgSrc, desc) {
-      document.getElementById('modal').style.display = 'flex';
-      document.getElementById('modal-title').textContent = title;
-      document.getElementById('modal-img').src = imgSrc;
-      document.getElementById('modal-desc').textContent = desc;
-    }
+ <!-- JavaScript -->
+<script>
+  /* ===== 基本变量 ===== */
+  const images = Array.from(document.querySelectorAll('.grid img'));
+  let currentIndex = 0;
 
-    function closeModal(e) {
-      // 点击弹窗背景或 × 按钮关闭
-      if (e.target.id === 'modal' || e.target.className === 'close') {
-        document.getElementById('modal').style.display = 'none';
-      }
-    }
+  /* ===== 打开弹窗 ===== */
+  function openModal(index) {
+    currentIndex = index;
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modalImage');
 
-    // 禁止右键
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-    });
-  </script>  
+    modalImage.src = images[index].src;
+    modal.style.display = 'flex';
+  }
+
+  /* ===== 关闭弹窗 ===== */
+  function closeModal(e) {
+    if (
+      e.target.id === 'modal' ||
+      e.target.classList.contains('close')
+    ) {
+      document.getElementById('modal').style.display = 'none';
+    }
+  }
+
+  /* ===== 切换图片 ===== */
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById('modalImage').src = images[currentIndex].src;
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById('modalImage').src = images[currentIndex].src;
+  }
+
+  /* ===== 键盘控制 ===== */
+  document.addEventListener('keydown', function (e) {
+    const modal = document.getElementById('modal');
+    if (modal.style.display !== 'flex') return;
+
+    if (e.key === 'Escape') modal.style.display = 'none';
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
+
+  /* ===== 绑定图片点击 ===== */
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => openModal(index));
+  });
+
+  /* ===== 禁止右键菜单（全站） ===== */
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+</script>
+
   
 </body>
 </html>
