@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -8,10 +7,6 @@
 /* 页面正文字体 */
 body {
   font-family: Helvetica, Arial, sans-serif;
-}
-
-/* 禁止文本选中（辅助防止复制） */
-body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -45,15 +40,17 @@ nav.top-nav {
   background-color: #fff;
   z-index: 1000;
 }
+
+/* Instagram 图标 */
 .social-link {
   position: absolute;
-  right: 40px;               /* 距离右边边缘 */
+  right: 40px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .social-link img {
-  width: 30px;               /* 图标大小 */
+  width: 30px;
   height: 30px;
 }
 
@@ -75,9 +72,9 @@ nav.top-nav {
 
 /* 导航链接字体样式 */
 nav.top-nav a {
-  font-family: 'Mansalva', Helvetica, Arial, sans-serif; /* Mansalva */
+  font-family: 'Mansalva', Helvetica, Arial, sans-serif;
   font-weight: normal;
-  font-size: 30px;           /* 大字号 */
+  font-size: 30px;
   text-decoration: none;
   color: black;
 }
@@ -90,26 +87,27 @@ nav.top-nav a.logo {
 
 /* 图片网格 */
 .grid {
-  max-width: 1200px;         /* 内容最大宽度 */
-  margin: 100px auto 0;      /* 顶部留导航高度 */
+  max-width: 1200px;
+  margin: 100px auto 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  padding: 40px 20px;        /* 内部留白 */
+  padding: 40px 20px;
 }
 
 .grid img {
-  width: 100%;               /* 占满列宽 */
-  aspect-ratio: 2 / 3;       /* 竖向 2:3 */
-  object-fit: cover;         /* 保持裁剪 */
+  width: 100%;
+  aspect-ratio: 2 / 3;       /* 保持竖向 2:3 */
+  object-fit: cover;
   display: block;
   height: auto;
+  cursor: pointer;
 }
 
 /* 文字页面样式（About / Shop 等） */
 .text-page {
   max-width: 700px;
-  margin: 150px auto 0;      /* 顶部留出导航 */
+  margin: 150px auto 0;
   padding: 60px 40px;
 }
 
@@ -120,7 +118,7 @@ nav.top-nav a.logo {
   align-items: center;
   position: fixed;
   inset: 0;
-  background: rgba(255,255,255,0.3);
+  background: rgba(0,0,0,0.3); /* 浅黑色半透明 */
   z-index: 3000;
 
   opacity: 0;
@@ -128,7 +126,7 @@ nav.top-nav a.logo {
   transition: opacity 0.3s ease;
 }
 
-/* 显示状态 */
+/* 弹窗显示状态 */
 .modal.active {
   opacity: 1;
   pointer-events: auto;
@@ -158,4 +156,3 @@ nav.top-nav a.logo {
   cursor: pointer;
   user-select: none;
 }
-
