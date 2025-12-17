@@ -1,14 +1,16 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* 页面正文字体 */
 body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-/* 禁止网页右键菜单 */
+/* 禁止文本选中（辅助防止复制） */
 body {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -20,11 +22,7 @@ body, html {
   -webkit-touch-callout: none; /* iOS Safari */
 }
 
-document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-});
-
-/* 引入 Mansalva 字体，只用于导航 */
+/* 引入 Mansalva 字体，仅用于导航 */
 @font-face {
   font-family: 'Mansalva';
   src: url('fonts/Mansalva-Regular.woff2') format('woff2'),
@@ -33,27 +31,12 @@ document.addEventListener('contextmenu', function(e) {
   font-style: normal;
 }
 
-/* 顶部导航使用 Mansalva 字体 */
-nav.top-nav a {
-  font-family: 'Mansalva', Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  font-size: 46px;   /* 顶部导航字号，可自行调整 */
-  text-decoration: none;
-  color: black;
-}
-
-/* 如果 logo 需要不同风格，可以单独设置 */
-nav.top-nav a.logo {
-  font-weight: 700;       
-  font-size: 46px;        
-}
-
-/* Navigation */
+/* 顶部导航 */
 nav.top-nav {
   display: flex;
-  justify-content: center;  /* 水平居中导航 */
+  justify-content: center;   /* 导航水平居中 */
   align-items: center;
-  gap: 40px;                /* 导航项间距 */
+  gap: 40px;                 /* 导航项间距 */
   padding: 20px 0;
   border-bottom: 1px solid #ddd;
   position: fixed;
@@ -63,27 +46,43 @@ nav.top-nav {
   z-index: 1000;
 }
 
-/* Grid */
+/* 导航链接字体样式 */
+nav.top-nav a {
+  font-family: 'Mansalva', Helvetica, Arial, sans-serif; /* Mansalva */
+  font-weight: normal;
+  font-size: 36px;           /* 大字号 */
+  text-decoration: none;
+  color: black;
+}
+
+/* logo 可以单独调整 */
+nav.top-nav a.logo {
+  font-weight: 700;
+  font-size: 46px;
+}
+
+/* 图片网格 */
 .grid {
-  max-width: 1200px;       /* 控制内容宽度 */
-  margin: 100px auto 0;    /* 顶部留出导航高度 */
+  max-width: 1200px;         /* 内容最大宽度 */
+  margin: 100px auto 0;      /* 顶部留导航高度 */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  padding: 40px 20px;      /* 内部留白 */
+  padding: 40px 20px;        /* 内部留白 */
 }
 
 .grid img {
-  width: 100%;             /* 占满列宽 */
-  aspect-ratio: 2 / 3;     /* 固定竖向 2:3 */
-  object-fit: cover;       /* 保持裁剪 */
+  width: 100%;               /* 占满列宽 */
+  aspect-ratio: 2 / 3;       /* 竖向 2:3 */
+  object-fit: cover;         /* 保持裁剪 */
   display: block;
-  height: auto;            /* 高度随宽度计算 */
+  height: auto;
 }
 
-/* Text Pages */
+/* 文字页面样式（About / Shop 等） */
 .text-page {
   max-width: 700px;
-  margin: 100px auto 0;    /* 顶部留出导航高度 */
+  margin: 150px auto 0;      /* 顶部留出导航 */
   padding: 60px 40px;
 }
+
