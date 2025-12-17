@@ -40,9 +40,10 @@ nav {
 }
 
 .grid img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;   /* 关键：统一尺寸 */
+  width: 100%;               /* 占满容器宽度 */
+  height: auto;              /* 高度自适应 */
+  aspect-ratio: 2 / 3;       /* 关键：固定 2:3 比例 */
+  object-fit: cover;         /* 保持裁剪效果，防止拉伸 */
   display: block;
 }
 
