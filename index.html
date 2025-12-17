@@ -5,113 +5,79 @@
   <title>My Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
-  
-<!-- Modal -->
-<div id="modal" class="modal" onclick="closeModal(event)">
-  <span class="close">&times;</span>
-  <img id="modalImage" src="" alt="">
-</div>
 
-  
 <body>
 
-<nav class="top-nav">
-  <a href="index.html" class="logo">DLDG</a>
-  <a href="shop.html">Shop</a>
-  <a href="about.html">About</a>
-</nav>
-
-<main class="grid">
-  <img src="images/work1.jpg" alt="Work 1">
-  <img src="images/work2.jpg" alt="Work 2">
-  <img src="images/work3.jpg" alt="Work 3">
-  <!-- 继续添加作品图片 -->
-</main>
-
-<!-- 顶部导航 -->
+  <!-- 顶部导航 -->
   <nav class="top-nav">
-    <a href="index.html" class="logo">MyName</a>
+    <a href="index.html" class="logo">DLDG</a>
     <a href="shop.html">Shop</a>
     <a href="about.html">About</a>
   </nav>
 
   <!-- 图片网格 -->
-  <div class="grid">
-    <img src="images/work1.jpg" alt="Work 1" onclick="openModal('Work 1','images/work1.jpg','This is Work 1 description')">
-    <img src="images/work2.jpg" alt="Work 2" onclick="openModal('Work 2','images/work2.jpg','This is Work 2 description')">
-    <!-- 其他图片 -->
-  </div>
+  <main class="grid">
+    <img src="images/work1.jpg" alt="Work 1">
+    <img src="images/work2.jpg" alt="Work 2">
+    <img src="images/work3.jpg" alt="Work 3">
+  </main>
 
   <!-- 弹窗 Modal -->
   <div id="modal" class="modal" onclick="closeModal(event)">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal(event)">&times;</span>
-      <h2 id="modal-title"></h2>
-      <img id="modal-img" src="" alt="">
-      <p id="modal-desc"></p>
-    </div>
+    <span class="close">&times;</span>
+    <img id="modalImage" src="" alt="">
   </div>
 
   <!-- JavaScript -->
- <!-- JavaScript -->
-<script>
-  /* ===== 基本变量 ===== */
-  const images = Array.from(document.querySelectorAll('.grid img'));
-  let currentIndex = 0;
+  <script>
+    const images = Array.from(document.querySelectorAll('.grid img'));
+    let currentIndex = 0;
 
-  /* ===== 打开弹窗 ===== */
-  function openModal(index) {
-    currentIndex = index;
-    const modal = document.getElementById('modal');
-    const modalImage = document.getElementById('modalImage');
+    function openModal(index) {
+      currentIndex = index;
+      const modal = document.getElementById('modal');
+      const modalImage = document.getElementById('modalImage');
 
-    modalImage.src = images[index].src;
-    modal.style.display = 'flex';
-  }
-
-  /* ===== 关闭弹窗 ===== */
-  function closeModal(e) {
-    if (
-      e.target.id === 'modal' ||
-      e.target.classList.contains('close')
-    ) {
-      document.getElementById('modal').style.display = 'none';
+      modalImage.src = images[index].src;
+      modal.style.display = 'flex';
     }
-  }
 
-  /* ===== 切换图片 ===== */
-  function showNext() {
-    currentIndex = (currentIndex + 1) % images.length;
-    document.getElementById('modalImage').src = images[currentIndex].src;
-  }
+    function closeModal(e) {
+      if (
+        e.target.id === 'modal' ||
+        e.target.classList.contains('close')
+      ) {
+        document.getElementById('modal').style.display = 'none';
+      }
+    }
 
-  function showPrev() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    document.getElementById('modalImage').src = images[currentIndex].src;
-  }
+    function showNext() {
+      currentIndex = (currentIndex + 1) % images.length;
+      document.getElementById('modalImage').src = images[currentIndex].src;
+    }
 
-  /* ===== 键盘控制 ===== */
-  document.addEventListener('keydown', function (e) {
-    const modal = document.getElementById('modal');
-    if (modal.style.display !== 'flex') return;
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      document.getElementById('modalImage').src = images[currentIndex].src;
+    }
 
-    if (e.key === 'Escape') modal.style.display = 'none';
-    if (e.key === 'ArrowRight') showNext();
-    if (e.key === 'ArrowLeft') showPrev();
-  });
+    document.addEventListener('keydown', function (e) {
+      const modal = document.getElementById('modal');
+      if (modal.style.display !== 'flex') return;
 
-  /* ===== 绑定图片点击 ===== */
-  images.forEach((img, index) => {
-    img.addEventListener('click', () => openModal(index));
-  });
+      if (e.key === 'Escape') modal.style.display = 'none';
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
 
-  /* ===== 禁止右键菜单（全站） ===== */
-  document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-  });
-</script>
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => openModal(index));
+    });
 
-  
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+  </script>
+
 </body>
 </html>
-
