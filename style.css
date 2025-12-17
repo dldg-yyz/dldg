@@ -53,11 +53,11 @@ nav.top-nav a.logo {
 }
 
 .grid img {
-  width: 100%;
-  height: 300px;       /* 固定高度 */
-  aspect-ratio: 2 / 3; /* 竖向 2:3 */
-  object-fit: cover;
+  width: 100%;               /* 占满列宽 */
+  aspect-ratio: 2 / 3;       /* 保持竖向 2:3 比例 */
+  object-fit: cover;         /* 保持裁剪，防止拉伸 */
   display: block;
+  height: auto;              /* 高度由宽度和比例自动计算 */
 }
 
 /* Text Pages */
